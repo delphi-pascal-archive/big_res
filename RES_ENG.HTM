@@ -1,0 +1,162 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.05 [fr] (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Jean-Claude Meier">
+   <TITLE>Ressource</TITLE>
+<!--
+FILE:   Blank.htm
+DESCR:  Blank document for Netscape Help implementation.
+NOTES:  The about:blank URL is not supported on the Mac.
+-->
+</HEAD>
+<BODY TEXT="#400040" BGCOLOR="#FFFF80" LINK="#0000FF" VLINK="#008000" ALINK="#FF0080">
+
+<BLOCKQUOTE>
+<CENTER><FONT COLOR="#FFFFCC">&nbsp;</FONT></CENTER>
+</BLOCKQUOTE>
+&nbsp;
+<TABLE BORDER COLS=1 WIDTH="100%" BGCOLOR="#99FF99" >
+<TR>
+<TD>
+<CENTER><BLINK><FONT SIZE=+3>&Ocirc; RES &Ocirc;</FONT></BLINK></CENTER>
+</TD>
+</TR>
+</TABLE>
+
+<CENTER>&nbsp;&copy; 29/12/98 Jean Claude Meier</CENTER>
+&nbsp;
+
+<P>Under Windows and with Delphi it's very easy to put the main resources
+(BMP and WMF pictures, icons) directly in the .EXE file.
+
+<P>But we can also put a lot of other things : cursors, sounds, messages
+and even fonts !
+
+<P>We must, like in most high level languages, create a resources file
+(.RES).
+
+<P>Why :
+
+<P>- best use of memory (load and unload of resources if necessary)
+<BR>- compacity (less files)
+<BR>- security (less risk of damage or loss of files)
+<BR>- more rapidity to load ?
+
+<P>and perhaps above all the possibility with an utilitary like Resource
+WorkShop to have access to these resources without having the source of
+the program (to translate a soft for different countries for example)
+
+<P>It's not very difficult but the documentation, supplied on the subject
+with Delphi,&nbsp; is&nbsp; rather thin . I will try to explain with elements
+found here or there.
+
+<P>For each project ( PROJECT1.DPR) Delphi create a PROJECT1.RES (name_of_
+project.res) in which it puts only the icon (?). We don't touch this one
+!
+
+<P>We must create a own .RES and give it a name different from the program's
+name (TEST here) to put all the things we want to incorporate in it (pictures,
+sounds, icons, strings, ...)
+
+<P><B><U>The method</U></B> :
+
+<P>With an editor (Notepad or Delphi editor), we must create a text file&nbsp;
+with&nbsp; .RC as extension
+<BR>&nbsp;
+
+<P>Example : TEST.RC&nbsp; in which w'll put : 2 sounds , 3 pictures, 2
+cursors, 3 icons et 3 strings.
+<BR>&nbsp;
+<BR>&nbsp;
+<CENTER><TABLE BORDER COLS=1 WIDTH="39%" BGCOLOR="#CCFFFF" >
+<TR>
+<TD>S1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WAV&nbsp;&nbsp;&nbsp;&nbsp;
+Son1.Wav&nbsp;
+<BR>S2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WAV&nbsp;&nbsp;&nbsp;&nbsp;
+Son2.Wav&nbsp;
+<BR>vache&nbsp;&nbsp;&nbsp;&nbsp; BITMAP&nbsp; vache.bmp&nbsp;
+<BR>perroquet BITMAP&nbsp; perroq.bmp&nbsp;
+<BR>rat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BITMAP&nbsp; rat.bmp&nbsp;
+<BR>baton&nbsp;&nbsp;&nbsp;&nbsp; CURSOR&nbsp; baton.cur&nbsp;
+<BR>seau&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CURSOR&nbsp; seau.cur&nbsp;
+<BR>I1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ICON&nbsp;&nbsp;&nbsp;
+icone1.ico&nbsp;
+<BR>I2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ICON&nbsp;&nbsp;&nbsp;
+icone2.ico&nbsp;
+<BR>I3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ICON&nbsp;&nbsp;&nbsp;
+icone3.ico&nbsp;
+<BR>STRINGTABLE&nbsp; DISCARDABLE&nbsp;
+<BR>{&nbsp;
+<BR>1, "Bonjour"&nbsp;
+<BR>2, "Good morning"&nbsp;
+<BR>3, "Guten Morgen"&nbsp;
+<BR>}&nbsp;
+<BR>&nbsp;</TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;
+
+<P>It's important to follow&nbsp; exactly this model and then to compile
+with BRCC32.EXE (supplied with Delphi, BRCC in Delphi 1)
+
+<P><B><U>Syntax</U></B> : BRCC32 Test
+
+<P>Don't forget here to put all the resources in the current directory
+when compiling with&nbsp; BRCC32.
+<BR>&nbsp;
+<BR>If no error happens, we obtain a&nbsp; TEST.RES file that we can incorporate
+in a project as shown below :
+<BR>&nbsp;
+<CENTER><TABLE BORDER COLS=1 WIDTH="30%" BGCOLOR="#CCFFFF" >
+<TR>
+<TD>var&nbsp;
+<BR>&nbsp; Form1: TForm1;&nbsp;
+
+<P>Implementation&nbsp;
+<BR>{$R *.DFM}&nbsp;
+
+<P>{$R Test.res}</TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;
+<BR>&nbsp;
+<BR>After compiling the project by Delphi, the .RES will be incorporated
+int the .EXE
+<BR>&nbsp;
+
+<P><U>Note :</U>
+<BR>Cursors, icons, and even pictures can be created with<I> IMAGEDIT (supplied
+with Delphi) wich can directly realise the .RES.&nbsp; (but be sure to
+capitalize all ressources names !)</I>
+
+<P>In the project w'll call these different resources with appropriate
+procedures as described in file <A HREF="Unit1.pas">Unit1.pas</A>.
+<BR>&nbsp;
+<BR>For a basic use it's easiest to put the pictures and strings directly
+in the .EXE but for a professional one it's the right way, I think.
+<BR>&nbsp;
+
+<P>See the program <B>project1.dpr</B> accompanying this text&nbsp; that
+demonstrates the technic.
+
+<P>I hope this could help ...
+
+<P>I learned a lot by studying the variety of sources generously given
+by their authors to the Delphi community.
+<BR>&nbsp;
+
+<P>&nbsp;
+<CENTER><I><BLINK><FONT COLOR="#993366"><FONT SIZE=+2>Let's put our&nbsp;
+RESOURCES&nbsp; together to progress !</FONT></FONT></BLINK></I></CENTER>
+&nbsp;
+
+<P>If you are interested send me a mail :
+<BR>&nbsp;
+<BLOCKQUOTE>
+<CENTER><A HREF="MailTo:j-c.meier@ac-nancy-metz.fr">j-c.meier@ac-nancy-metz.fr</A></CENTER>
+</BLOCKQUOTE>
+&nbsp;
+<BR>&nbsp;
+</BODY>
+</HTML>

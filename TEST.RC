@@ -1,0 +1,16 @@
+S1        WAV     Son1.Wav
+S2        WAV     Son2.Wav
+vache     BITMAP  vache.bmp
+perroquet BITMAP  perroq.bmp
+rat       BITMAP  rat.bmp
+baton     CURSOR  baton.cur
+seau      CURSOR  seau.cur
+I1        ICON    icone1.ico
+I2        ICON    icone2.ico
+I3        ICON    icone3.ico
+STRINGTABLE DISCARDABLE
+{
+1, "Bonjour"
+2, "Good morning"
+3, "Guten Morgen"
+}
